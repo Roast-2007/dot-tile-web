@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DotTile - 筒子牌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bg-decoration">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="mahjong-pattern"></div>
+    </div>
+
+    <!-- 流光溢彩横幅 -->
+    <div class="award-banner" id="awardBanner">
+        <div class="award-banner-shimmer"></div>
+        <div class="award-banner-inner">
+            <span class="award-icon">🏆</span>
+            <span class="award-text">我们获得了本次 Gamejam <strong>萌芽奖</strong>！&nbsp;&nbsp;线下特别版即将发布！</span>
+            <span class="award-icon">✨</span>
+        </div>
+        <button class="award-close-btn" id="awardClose" aria-label="关闭横幅">✕</button>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🀄</span>
+                <span class="logo-text">筒子牌</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">游戏介绍</a></li>
+                <li><a href="#yaku">役种</a></li>
+                <li><a href="#items">道具</a></li>
+                <li><a href="#boss">Boss</a></li>
+                <li><a href="#events">随机事件</a></li>
+                <li><a href="#nodemap">地图</a></li>
+                <li><a href="#download" class="nav-download">立即下载</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Roguelike 动作游戏</div>
+            <h1 class="hero-title">
+                <span class="title-main">筒子牌</span>
+                <span class="title-sub">DotTile</span>
+            </h1>
+            <p class="hero-tagline">麻将遇上弹幕射击</p>
+            <p class="hero-desc">收集牌张 · 组成役种 · 释放绝技 · 击败强敌</p>
+            <div class="hero-buttons">
+                <a href="https://pan.baidu.com/s/1sB8sTGt9q9fPU55of4EN8g?pwd=lyco" target="_blank" class="btn btn-primary">
+                    <span class="btn-icon">⬇</span>
+                    <span class="btn-text">立即下载</span>
+                    <span class="btn-badge">Windows</span>
+                </a>
+                <a href="#about" class="btn btn-secondary">了解更多</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">20</span>
+                    <span class="stat-label">种役种</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">26</span>
+                    <span class="stat-label">个道具</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">位Boss</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="tile-showcase">
+                <div class="tile tile-wan" data-tile="5万">🀋</div>
+                <div class="tile tile-tong" data-tile="3筒">🀚</div>
+                <div class="tile tile-tiao" data-tile="7条">🀖</div>
+                <div class="tile tile-wind" data-tile="东">🀀</div>
+                <div class="tile tile-dragon" data-tile="中">🀄</div>
+            </div>
+            <div class="floating-effect"></div>
+        </div>
+    </section>
+
+    <!-- 游戏介绍 -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">核心玩法</span>
+                <h2 class="section-title">以牌为刃，战至终章</h2>
+                <p class="section-desc">在 DotTile 中，你将扮演一名使用麻将机制战斗的角色</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span class="icon-tile">🀫</span>
+                    </div>
+                    <h3>收集牌张</h3>
+                    <p>在关卡中移动时拾取敌人掉落的麻将牌，手牌上限为8张</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span class="icon-combo">🀅🀅🀅</span>
+                    </div>
+                    <h3>组成役种</h3>
+                    <p>通过手牌组成和牌役种，触发特殊攻击与强力AOE效果</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span class="icon-boss">👹</span>
+                    </div>
+                    <h3>击败Boss</h3>
+                    <p>穿越三个难度递增的关卡，挑战各具特色的强大Boss</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span class="icon-item">⚜</span>
+                    </div>
+                    <h3>收集道具</h3>
+                    <p>在关卡之间获取道具，强化本轮Roguelike流程中的能力</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 牌张系统 -->
+    <section class="tiles-system">
+        <div class="section-container">
+            <div class="section-header light">
+                <span class="section-badge">牌张系统</span>
+                <h2 class="section-title">136张标准麻将牌</h2>
+                <p class="section-desc">遵循标准中国麻将编码规则</p>
+            </div>
+            <div class="tiles-categories">
+                <div class="tile-category">
+                    <div class="category-header">
+                        <span class="category-icon wan">万</span>
+                        <h3>万子</h3>
+                    </div>
+                    <div class="category-desc">万字牌 1-9</div>
+                    <div class="category-effect">
+                        <span class="effect-tag">对子</span>
+                        <span>敌人伤害降低50%</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">刻子</span>
+                        <span>全场减速50%</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">顺子</span>
+                        <span>全场减速30%</span>
+                    </div>
+                </div>
+                <div class="tile-category">
+                    <div class="category-header">
+                        <span class="category-icon tong">筒</span>
+                        <h3>筒子</h3>
+                    </div>
+                    <div class="category-desc">筒字牌 1-9</div>
+                    <div class="category-effect">
+                        <span class="effect-tag">对子</span>
+                        <span>触发圆形AOE</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">刻子</span>
+                        <span>生成环绕牌</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">顺子</span>
+                        <span>攻击次数+1</span>
+                    </div>
+                </div>
+                <div class="tile-category">
+                    <div class="category-header">
+                        <span class="category-icon tiao">条</span>
+                        <h3>条子</h3>
+                    </div>
+                    <div class="category-desc">条字牌 1-9</div>
+                    <div class="category-effect">
+                        <span class="effect-tag">对子</span>
+                        <span>增加血量上限</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">刻子</span>
+                        <span>回复大量血量</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">顺子</span>
+                        <span>回复少量血量</span>
+                    </div>
+                </div>
+                <div class="tile-category">
+                    <div class="category-header">
+                        <span class="category-icon honor">字</span>
+                        <h3>字牌</h3>
+                    </div>
+                    <div class="category-desc">风牌与箭牌</div>
+                    <div class="category-effect">
+                        <span class="effect-tag">对子</span>
+                        <span>玩家加速20%</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">刻子</span>
+                        <span>永久攻击力+10%</span>
+                    </div>
+                    <div class="category-effect">
+                        <span class="effect-tag">顺子</span>
+                        <span>不存在</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 役种展示 -->
+    <section id="yaku" class="yaku">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">役种系统</span>
+                <h2 class="section-title">和牌释放绝技</h2>
+                <p class="section-desc">组成特定牌型，触发强力效果</p>
+            </div>
+            <div class="yaku-tabs">
+                <button class="yaku-tab active" data-tab="normal">普通役</button>
+                <button class="yaku-tab" data-tab="yakuman">役满</button>
+            </div>
+            <div class="yaku-content">
+                <div class="yaku-panel active" id="normal-panel">
+                    <div class="yaku-grid">
+                        <div class="yaku-card">
+                            <div class="yaku-han">1番</div>
+                            <h3>底和</h3>
+                            <p>标准和牌形式<br>两个面子+一个对子</p>
+                            <div class="yaku-effect">触发基础AOE</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">1番</div>
+                            <h3>单风牌</h3>
+                            <p>拥有南、西、北风<br>任意一种刻子</p>
+                            <div class="yaku-effect">玩家加速20%</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">动态</div>
+                            <h3>宝牌</h3>
+                            <p>手牌中每张红宝牌<br>计为1番</p>
+                            <div class="yaku-effect">每张红宝牌恢复10血</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">2番</div>
+                            <h3>断幺九</h3>
+                            <p>手牌不含幺九牌<br>和字牌</p>
+                            <div class="yaku-effect">AOE半径+20%</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">2番</div>
+                            <h3>役牌</h3>
+                            <p>拥有白发中<br>三元牌刻子</p>
+                            <div class="yaku-effect">触发2个Combo</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">2番</div>
+                            <h3>场风牌</h3>
+                            <p>拥有东风刻子</p>
+                            <div class="yaku-effect">永久攻击力+10%</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">3番</div>
+                            <h3>混一色</h3>
+                            <p>一种数字牌<br>加字牌混合</p>
+                            <div class="yaku-effect">触发3个Combo</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">3番</div>
+                            <h3>对对和</h3>
+                            <p>两个刻子<br>加一个对子</p>
+                            <div class="yaku-effect">触发刻子特效</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">3番</div>
+                            <h3>两色同顺</h3>
+                            <p>两个顺子值相同<br>但花色不同</p>
+                            <div class="yaku-effect">触发额外效果</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">3番</div>
+                            <h3>两色同刻</h3>
+                            <p>两个刻子值相同<br>但花色不同</p>
+                            <div class="yaku-effect">触发额外效果</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">3番</div>
+                            <h3>混全带幺九</h3>
+                            <p>每个面子和对子<br>都含幺九或字牌</p>
+                            <div class="yaku-effect">触发额外效果</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">4番</div>
+                            <h3>四对子</h3>
+                            <p>4个不同的对子<br>2+2+2+2</p>
+                            <div class="yaku-effect">双花色刻子效果</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">4番</div>
+                            <h3>两杠子</h3>
+                            <p>两个杠子<br>4+4张相同牌</p>
+                            <div class="yaku-effect">强力攻击效果</div>
+                        </div>
+                        <div class="yaku-card">
+                            <div class="yaku-han">6番</div>
+                            <h3>清一色</h3>
+                            <p>同一种花色的<br>数字牌</p>
+                            <div class="yaku-effect">全套Combo效果</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="yaku-panel" id="yakuman-panel">
+                    <div class="yaku-grid">
+                        <div class="yaku-card yakuman-card">
+                            <div class="yaku-han yakuman">役满</div>
+                            <h3>天和</h3>
+                            <p>第一回合就和牌</p>
+                            <div class="yaku-effect">对Boss造成1000伤害</div>
+                        </div>
+                        <div class="yaku-card yakuman-card">
+                            <div class="yaku-han yakuman">役满</div>
+                            <h3>筒士无双</h3>
+                            <p>手牌为1万、9万、1条、9条、东南西北</p>
+                            <div class="yaku-effect">对Boss造成200伤害</div>
+                        </div>
+                        <div class="yaku-card yakuman-card">
+                            <div class="yaku-han yakuman">役满</div>
+                            <h3>小三元</h3>
+                            <p>两种三元牌刻子<br>加一种对子</p>
+                            <div class="yaku-effect">敌人血量上限-50%</div>
+                        </div>
+                        <div class="yaku-card yakuman-card">
+                            <div class="yaku-han yakuman">役满</div>
+                            <h3>莲花宝灯</h3>
+                            <p>同一花色<br>11119999</p>
+                            <div class="yaku-effect">清屏效果</div>
+                        </div>
+                        <div class="yaku-card yakuman-card">
+                            <div class="yaku-han yakuman">役满</div>
+                            <h3>字一色</h3>
+                            <p>全是字牌<br>且能和牌</p>
+                            <div class="yaku-effect">最大生命值+20</div>
+                        </div>
+                        <div class="yaku-card yakuman-card">
+                            <div class="yaku-han yakuman">役满</div>
+                            <h3>筒一色</h3>
+                            <p>全是筒子<br>2,3,4,6,8构成</p>
+                            <div class="yaku-effect">伤害倍率+50%<br>最大生命值+100</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 道具图鉴 -->
+    <section id="items" class="items">
+        <div class="section-container">
+            <div class="section-header light">
+                <span class="section-badge">道具系统</span>
+                <h2 class="section-title">Roguelike 道具图鉴</h2>
+                <p class="section-desc">26个独特道具，四种稀有度，打造你的专属流派</p>
+            </div>
+            <div class="rarity-tabs">
+                <button class="rarity-tab active" data-rarity="green">
+                    <span class="rarity-dot green"></span>
+                    绿色 · 普通
+                </button>
+                <button class="rarity-tab" data-rarity="blue">
+                    <span class="rarity-dot blue"></span>
+                    蓝色 · 稀有
+                </button>
+                <button class="rarity-tab" data-rarity="purple">
+                    <span class="rarity-dot purple"></span>
+                    紫色 · 珍稀
+                </button>
+                <button class="rarity-tab" data-rarity="golden">
+                    <span class="rarity-dot golden"></span>
+                    金色 · 传说
+                </button>
+            </div>
+            <div class="items-content">
+                <div class="items-panel active" id="green-panel">
+                    <div class="items-grid">
+                        <div class="item-card green">
+                            <div class="item-icon">📜</div>
+                            <h3>力量之卷</h3>
+                            <p>弃牌打出幺九牌时伤害增加</p>
+                        </div>
+                        <div class="item-card green">
+                            <div class="item-icon">💍</div>
+                            <h3>风之戒</h3>
+                            <p>打出东风牌获得6%攻击力加成</p>
+                        </div>
+                        <div class="item-card green">
+                            <div class="item-icon">🪙</div>
+                            <h3>铜钱</h3>
+                            <p>打出风牌时获得30点棒</p>
+                        </div>
+                        <div class="item-card green">
+                            <div class="item-icon">🎋</div>
+                            <h3>幸运御守</h3>
+                            <p>和牌时每有一个2/5/8，+30点棒</p>
+                        </div>
+                        <div class="item-card green">
+                            <div class="item-icon">🌙</div>
+                            <h3>阴之符</h3>
+                            <p>和牌含1/2/3组合时额外触发效果</p>
+                        </div>
+                        <div class="item-card green">
+                            <div class="item-icon">☀️</div>
+                            <h3>阳之符</h3>
+                            <p>和牌含7/8/9组合时额外触发效果</p>
+                        </div>
+                        <div class="item-card green">
+                            <div class="item-icon">⚡</div>
+                            <h3>锐化卷轴</h3>
+                            <p>弃牌攻击伤害+20%</p>
+                        </div>
+                        <div class="item-card green">
+                            <div class="item-icon">🧧</div>
+                            <h3>红包</h3>
+                            <p>牌山刷新时所有五万/条/筒均变为红宝牌</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="items-panel" id="blue-panel">
+                    <div class="items-grid">
+                        <div class="item-card blue">
+                            <div class="item-icon">🔷</div>
+                            <h3>三连之证</h3>
+                            <p>手牌包含刻子时伤害提升，2个刻子+50%</p>
+                        </div>
+                        <div class="item-card blue">
+                            <div class="item-icon">🐱</div>
+                            <h3>招财猫</h3>
+                            <p>和牌时获得点棒数增加50%</p>
+                        </div>
+                        <div class="item-card blue">
+                            <div class="item-icon">⚔️</div>
+                            <h3>双刀</h3>
+                            <p>溢出伤害累积，附加到下一次攻击</p>
+                        </div>
+                        <div class="item-card blue">
+                            <div class="item-icon">🔧</div>
+                            <h3>维修包</h3>
+                            <p>每关可刷新一次手牌，和牌重置</p>
+                        </div>
+                        <div class="item-card blue">
+                            <div class="item-icon">🔘</div>
+                            <h3>口袋筒子</h3>
+                            <p>每关开始时生成一张环绕牌</p>
+                        </div>
+                        <div class="item-card blue">
+                            <div class="item-icon">📜</div>
+                            <h3>役之证</h3>
+                            <p>和牌时随机选择一个役种重复计算（役满除外）</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="items-panel" id="purple-panel">
+                    <div class="items-grid">
+                        <div class="item-card purple">
+                            <div class="item-icon">💎</div>
+                            <h3>翡翠</h3>
+                            <p>回复和增加生命上限效果+100%</p>
+                        </div>
+                        <div class="item-card purple">
+                            <div class="item-icon">🌀</div>
+                            <h3>无限陀螺</h3>
+                            <p>每打出一张牌+2%攻击力，可叠加</p>
+                        </div>
+                        <div class="item-card purple">
+                            <div class="item-icon">🟠</div>
+                            <h3>琥珀</h3>
+                            <p>普通攻击时，减益敌人受10点伤害</p>
+                        </div>
+                        <div class="item-card purple">
+                            <div class="item-icon">🪸</div>
+                            <h3>血珊瑚</h3>
+                            <p>筒对子AOE和环绕牌击中时恢复1生命</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="items-panel" id="golden-panel">
+                    <div class="items-grid">
+                        <div class="item-card golden">
+                            <div class="item-icon">⏳</div>
+                            <h3>时间沙漏</h3>
+                            <p>打出牌后大幅缩减冷却时间</p>
+                        </div>
+                        <div class="item-card golden">
+                            <div class="item-icon">🐦</div>
+                            <h3>雀之证</h3>
+                            <p>和牌时额外触发雀头对应花色全套效果</p>
+                        </div>
+                        <div class="item-card golden">
+                            <div class="item-icon">🔴</div>
+                            <h3>筒子牌</h3>
+                            <p>筒子牌组合效果额外触发一次</p>
+                        </div>
+                        <div class="item-card golden">
+                            <div class="item-icon">🍀</div>
+                            <h3>幸运四叶草</h3>
+                            <p>和牌后附加效果额外触发，番数翻倍</p>
+                        </div>
+                        <div class="item-card golden">
+                            <div class="item-icon">🔮</div>
+                            <h3>万重咒</h3>
+                            <p>万字减速效果可叠加，持续时间翻倍</p>
+                        </div>
+                        <div class="item-card golden">
+                            <div class="item-icon">🌊</div>
+                            <h3>修罗牌浪</h3>
+                            <p>全役种智能选牌，软保底提升至0.60</p>
+                        </div>
+                        <div class="item-card golden">
+                            <div class="item-icon">🚫</div>
+                            <h3>花色封印</h3>
+                            <p>牌山刷新时随机移除一个花色</p>
+                        </div>
+                        <div class="item-card golden">
+                            <div class="item-icon">🔱</div>
+                            <h3>幺九之证</h3>
+                            <p>牌山刷新时添加全部幺九牌各4张</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boss介绍 -->
+    <section id="boss" class="boss">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Boss挑战</span>
+                <h2 class="section-title">三位强敌</h2>
+                <p class="section-desc">各具独特攻击模式与机制</p>
+            </div>
+            <div class="boss-list">
+                <div class="boss-card">
+                    <div class="boss-number">01</div>
+                    <div class="boss-content">
+                        <h3>突刺者</h3>
+                        <div class="boss-tags">
+                            <span class="boss-tag">五阶段</span>
+                            <span class="boss-tag">高速突进</span>
+                        </div>
+                        <p>在玩家周围徘徊，随后进入警告状态，锁定玩家位置后发起高速突刺攻击，突刺后进入短暂的僵直状态。</p>
+                        <div class="boss-phases">
+                            <div class="phase"><span>徘徊</span> → <span>警告</span> → <span>蓄力</span> → <span>突刺</span> → <span>僵直</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="boss-card">
+                    <div class="boss-number">02</div>
+                    <div class="boss-content">
+                        <h3>蛄蛹者</h3>
+                        <div class="boss-tags">
+                            <span class="boss-tag">紧张度</span>
+                            <span class="boss-tag">召唤</span>
+                        </div>
+                        <p>拥有紧张度系统，常态下缓慢积累紧张度，玩家接近时加速积累。满紧张度后受惊进入高速乱窜状态，同时召唤小怪并发动AOE。</p>
+                        <div class="boss-phases">
+                            <div class="phase"><span>常态</span> → <span>装死</span> → <span>受惊</span> → <span>乱窜</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="boss-card">
+                    <div class="boss-number">03</div>
+                    <div class="boss-content">
+                        <h3>死神</h3>
+                        <div class="boss-tags">
+                            <span class="boss-tag">死亡标记</span>
+                            <span class="boss-tag">狂暴</span>
+                            <span class="boss-tag">瞬移</span>
+                        </div>
+                        <p>每次碰撞给玩家叠加死亡标记，增加后续伤害。血量低于50%触发狂暴模式，速度伤害翻倍，并获得瞬移和虚化防御能力。</p>
+                        <div class="boss-phases">
+                            <div class="phase"><span>普通</span> → <span>狂暴</span> → <span>瞬移+虚化</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 随机事件系统 -->
+    <section id="events" class="events-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">肉鸽事件</span>
+                <h2 class="section-title">每步皆有故事</h2>
+                <p class="section-desc">灵感源自《杀戮尖塔》《暗黑地牢》——11 个随机事件，每段旅程都不同</p>
+            </div>
+
+            <div class="events-features-grid">
+                <div class="events-feature-card">
+                    <span class="events-feature-icon">📖</span>
+                    <h3>打字机叙事</h3>
+                    <p>故事文字逐字浮现，沉浸感十足，点击即可跳过</p>
+                </div>
+                <div class="events-feature-card">
+                    <span class="events-feature-icon">⛓️</span>
+                    <h3>连环事件链</h3>
+                    <p>横跨多个节点的连续故事线，前期选择影响后续走向</p>
+                </div>
+                <div class="events-feature-card">
+                    <span class="events-feature-icon">🎲</span>
+                    <h3>多轮对话</h3>
+                    <p>商店、赌博等事件支持重复互动，每轮决策举足轻重</p>
+                </div>
+                <div class="events-feature-card">
+                    <span class="events-feature-icon">⚖️</span>
+                    <h3>加权随机</h3>
+                    <p>优先展示未经历过的新事件，丰富每次游玩体验</p>
+                </div>
+            </div>
+
+            <div class="events-cards-grid">
+                <div class="event-item-card">
+                    <span class="event-badge event-badge-normal">普通</span>
+                    <h3>神秘商人</h3>
+                    <p>以生命换取分数，三档金额任君选择</p>
+                </div>
+                <div class="event-item-card">
+                    <span class="event-badge event-badge-normal">普通</span>
+                    <h3>古老祭坛</h3>
+                    <p>虔诚祈祷得恢复，献祭生命换高额点棒</p>
+                </div>
+                <div class="event-item-card">
+                    <span class="event-badge event-badge-normal">普通</span>
+                    <h3>迷途旅人</h3>
+                    <p>施以援手或趁机抢劫，抢劫有 50% 概率遭到反击</p>
+                </div>
+                <div class="event-item-card">
+                    <span class="event-badge event-badge-normal">普通</span>
+                    <h3>麻将残局</h3>
+                    <p>游戏主题特色谜题，成功率随 Act 难度递变</p>
+                </div>
+                <div class="event-item-card event-item-chain">
+                    <span class="event-badge event-badge-chain">事件链</span>
+                    <h3>麻将模因病毒</h3>
+                    <p>横跨三节点的连环剧情，力挽狂澜还是放弃抵抗</p>
+                </div>
+                <div class="event-item-card event-item-continuous">
+                    <span class="event-badge event-badge-continuous">多轮</span>
+                    <h3>麻将轮盘赌</h3>
+                    <p>可反复押注的赌博游戏，19% 概率赢得随机道具</p>
+                </div>
+                <div class="event-item-card">
+                    <span class="event-badge event-badge-normal">普通</span>
+                    <h3>黑色星期四</h3>
+                    <p>疯狂促销！清零点棒换 2 件，血量归 1 换 3 件道具</p>
+                </div>
+                <div class="event-item-card">
+                    <span class="event-badge event-badge-normal">普通</span>
+                    <h3>神秘宝箱</h3>
+                    <p>安全开箱得 1 件，冒险撬开可得 2 件但需失去 1 件</p>
+                </div>
+                <div class="event-item-card event-item-special">
+                    <span class="event-badge event-badge-special">节点专属</span>
+                    <h3>奖励节点</h3>
+                    <p>战利品 · 神秘宝箱 · 嘉奖令三随机，专属事件池抽取</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三幕地图系统 -->
+    <section id="nodemap" class="nodemap-section">
+        <div class="section-container">
+            <div class="section-header light">
+                <span class="section-badge">地图探索</span>
+                <h2 class="section-title">三幕巡路</h2>
+                <p class="section-desc">类《杀戮尖塔》风格三幕式随机地图，每次探索路径都独一无二</p>
+            </div>
+
+            <div class="nodemap-stats-row">
+                <div class="nodemap-stat">
+                    <span class="nodemap-stat-num">3</span>
+                    <span class="nodemap-stat-label">幕</span>
+                </div>
+                <div class="nodemap-stat-divider">·</div>
+                <div class="nodemap-stat">
+                    <span class="nodemap-stat-num">8</span>
+                    <span class="nodemap-stat-label">层 / 幕</span>
+                </div>
+                <div class="nodemap-stat-divider">·</div>
+                <div class="nodemap-stat">
+                    <span class="nodemap-stat-num">5</span>
+                    <span class="nodemap-stat-label">路线</span>
+                </div>
+                <div class="nodemap-stat-divider">·</div>
+                <div class="nodemap-stat">
+                    <span class="nodemap-stat-num">7</span>
+                    <span class="nodemap-stat-label">节点类型</span>
+                </div>
+            </div>
+
+            <div class="nodemap-grid">
+                <div class="node-type-card node-battle">
+                    <span class="node-type-icon">⚔️</span>
+                    <h3>普通战斗</h3>
+                    <p>击败敌人，获得 +200 点棒</p>
+                    <span class="node-type-tag">常规</span>
+                </div>
+                <div class="node-type-card node-hard">
+                    <span class="node-type-icon">💀</span>
+                    <h3>高难战斗</h3>
+                    <p>精英敌人，额外三选一道具奖励</p>
+                    <span class="node-type-tag">精英</span>
+                </div>
+                <div class="node-type-card node-event">
+                    <span class="node-type-icon">❓</span>
+                    <h3>随机事件</h3>
+                    <p>从事件池加权抽取，优先新事件</p>
+                    <span class="node-type-tag">事件</span>
+                </div>
+                <div class="node-type-card node-rest">
+                    <span class="node-type-icon">🏕️</span>
+                    <h3>休整驿站</h3>
+                    <p>恢复 40 点生命，调整状态继续</p>
+                    <span class="node-type-tag">恢复</span>
+                </div>
+                <div class="node-type-card node-reward">
+                    <span class="node-type-icon">🎁</span>
+                    <h3>奖励节点</h3>
+                    <p>战利品 · 神秘宝箱 · 嘉奖令随机</p>
+                    <span class="node-type-tag">奖励</span>
+                </div>
+                <div class="node-type-card node-shop">
+                    <span class="node-type-icon">🏪</span>
+                    <h3>商店</h3>
+                    <p>消耗点棒购买强力道具，打造专属流派</p>
+                    <span class="node-type-tag">购买</span>
+                </div>
+                <div class="node-type-card node-boss">
+                    <span class="node-type-icon">👁️</span>
+                    <h3>幕终 Boss</h3>
+                    <p>通关后进入下一幕，或踏上最终决战</p>
+                    <span class="node-type-tag">Boss</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section id="download" class="download">
+        <div class="section-container">
+            <div class="download-content">
+                <h2 class="download-title">准备好开始你的雀士之旅了吗？</h2>
+                <p class="download-desc">收集牌张，组成役种，击败强敌，成为麻将大师！</p>
+                <div class="download-buttons">
+                    <a href="https://pan.baidu.com/s/1sB8sTGt9q9fPU55of4EN8g?pwd=lyco" target="_blank" class="btn btn-download-main">
+                        <span class="btn-icon-large">⬇</span>
+                        <div class="btn-download-info">
+                            <span class="btn-download-title">下载游戏</span>
+                            <span class="btn-download-meta">Windows · 约 200MB</span>
+                        </div>
+                    </a>
+                    <a href="https://pan.quark.cn/s/97a10b2e5c83#/list/share" target="_blank" class="btn btn-download-alt">
+                        备用下载
+                    </a>
+                </div>
+                <div class="download-note">
+                    <p>网盘提取码：<span class="extract-code">lyco</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <span class="logo-icon">🀄</span>
+                <span class="logo-text">筒子牌 DotTile</span>
+            </div>
+            <p class="footer-copyright">© 2026 Lyco Studio. All rights reserved.</p>
+            <p class="footer-note">Game Jam 参赛作品 · Unity 2022.3 LTS</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
