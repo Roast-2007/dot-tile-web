@@ -1,1 +1,1 @@
-Visit it in https://lyco,games/ !!
+Visit it in https://lyco.games/ !!
